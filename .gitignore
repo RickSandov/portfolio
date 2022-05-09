@@ -10,7 +10,7 @@
 
 # next.js
 /.next/
-/out/
+# /out/
 
 # production
 /build
@@ -33,3 +33,14 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+## dev
+/src/
+/public/
+.eslint.json
+next-env.d.ts
+next.config.js
+package.json
+README.md
+tsconfig.json
+yarnk.lock
