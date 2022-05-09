@@ -1,0 +1,183 @@
+@use "../../styles/colors"as *;
+@use "../../styles/animations"as *;
+@use "../../styles/mixins"as *;
+@use "../../styles/variables"as v;
+
+.hero {
+    height: 100vh;
+    min-height: 40rem;
+    width: 100vw;
+    padding: 0 8vw;
+    display: flex;
+    align-items: center;
+
+
+    & .content {
+        z-index: 2;
+        position: relative;
+        width: 100%;
+        margin-top: 10%;
+
+        &>span {
+            font-family: Ubuntu Mono;
+            font-size: 1.5rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+
+            &.animate {
+                @include typingAnimation(1.7s, 1s, 7);
+            }
+        }
+
+        &__nameContainer {
+            overflow: hidden;
+            width: fit-content;
+
+            & .name {
+                text-transform: uppercase;
+                font-size: 6rem;
+                font-size: clamp(5.5rem, 6vw, 8rem);
+                cursor: pointer;
+                animation: slideInRight 1s ease-in-out v.$headerTitleDelay backwards;
+                transform: translateX(0);
+
+                & .lastName {
+                    display: block;
+                    color: transparent;
+                    -webkit-text-stroke: 2px $primary;
+                    -webkit-text-fill-color: transparent;
+                    animation: slideInUp 1s ease-in-out calc(v.$headerTitleDelay + 1s) backwards;
+
+                    &::after {
+                        content: ': Human';
+                        font-family: Ubuntu Mono;
+                        font-size: 1.5rem;
+                        -webkit-text-stroke: 0;
+                        -webkit-text-fill-color: white;
+                        text-transform: none;
+                        font-weight: 400;
+                        opacity: .2;
+                    }
+                }
+            }
+        }
+
+        h2 {
+            margin-top: 2rem;
+            text-transform: uppercase;
+            color: $light-gray;
+            font-size: 6rem;
+            font-size: clamp(5.5rem, 6vw, 8rem);
+            opacity: .3;
+            animation: fadeIn 2s ease-in-out calc(v.$headerTitleDelay + 1.5s) backwards;
+        }
+
+        & .description {
+            position: absolute;
+            width: 600px;
+            max-width: 80%;
+            font-weight: 400;
+            top: 90%;
+            opacity: .8;
+            animation: fadeIn 2s ease-in-out calc(v.$headerTitleDelay + 3s) backwards;
+        }
+
+    }
+
+    & .balls {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: fit-content;
+        // margin: 0 30vw 0 auto;
+        right: 15vw;
+        top: 60%;
+        // overflow: hidden;
+        transform: translateY(-50%);
+        animation: fadeIn 2s ease-in-out calc(v.$headerTitleDelay + 1.5s) backwards;
+        opacity: 1;
+
+        & .mainBall {
+            background-color: $light-gray;
+            height: 18vw;
+            width: 18vw;
+            border-radius: 50%;
+            order: 3;
+            animation: mainBall 4.8s infinite ease-in-out;
+            opacity: .4;
+        }
+
+        & .halfMoon {
+            order: 2;
+            width: 9vw;
+            height: 4.5vw;
+            background-color: rgba($primary, .3);
+            border-radius: 0 0 1500px 1500px;
+            margin-bottom: 5px;
+            position: relative;
+            animation: halfMoon 4.8s infinite ease-in-out;
+
+
+            & .bouncingBall {
+                position: absolute;
+                bottom: 105%;
+                order: 1;
+                width: 1.5vw;
+                height: 1.5vw;
+                background-color: rgba(white, .3);
+                border-radius: 50%;
+                animation: bouncingBall 4.8s infinite ease-in-out;
+            }
+        }
+    }
+}
+
+@keyframes mainBall {
+    0% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    100% {
+        transform: translateX(-5px);
+    }
+}
+
+@keyframes halfMoon {
+    0% {
+        transform: rotateZ(30deg);
+    }
+
+    50% {
+        transform: rotateZ(-30deg);
+    }
+
+    100% {
+        transform: rotateZ(30deg);
+    }
+}
+
+@keyframes bouncingBall {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(500%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+// const bouncingBallVariants: Variants = {
+//     visible: {
+//         // opacity: 1,
+//         x: ['0%', '400%', '0%'],
+//     }
+// }

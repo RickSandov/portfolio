@@ -1,0 +1,74 @@
+@use '../../styles/colors'as *;
+@use '../../styles/mixins'as m;
+
+.nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2.5rem;
+    z-index: 9;
+
+    &__logo {
+        color: $primary;
+        font-size: 3rem;
+    }
+
+    & ul {
+        display: flex;
+        list-style: none;
+        gap: 4rem;
+        align-items: center;
+
+        & li {
+            font-family: 'Ubuntu Mono', monospace;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+            font-size: 1.5rem;
+            cursor: pointer;
+            @include m.transition;
+            position: relative;
+
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -.4rem;
+                left: 0;
+                width: 0;
+                height: .2rem;
+                // background-color: ligthen($primary, 5%);
+                background-color: $primary;
+                @include m.transition;
+                box-shadow: 0 0 5px $primary;
+            }
+
+            &:hover,
+            &.active {
+                text-shadow: 0 0 2px $primary;
+
+                &::after {
+                    width: 100%;
+                }
+            }
+
+            &.resume {
+                background-color: $primary;
+                padding: 1rem 2rem;
+                border-radius: 5rem;
+                color: white;
+                opacity: .8;
+
+                &:hover {
+                    text-shadow: 0 0 2px $primary;
+                    opacity: 1;
+                    box-shadow: 0 0 5px $primary;
+
+                    &::after {
+                        width: 0;
+                    }
+                }
+            }
+        }
+    }
+}

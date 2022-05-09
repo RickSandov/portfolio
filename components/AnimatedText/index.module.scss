@@ -1,0 +1,22 @@
+.textContainer {
+
+    & span {
+        display: inline-block;
+        font-size: 4rem;
+    }
+
+    // &.cursor {
+    //     position: relative;
+
+    //     &::after {
+    //         content: '';
+    //         position: absolute;
+    //         right: 0;
+    //         top: 0;
+    //         height: 2rem;
+    //         width: 2rem;
+    //         background-color: red;
+    //     }
+    // }
+
+}
