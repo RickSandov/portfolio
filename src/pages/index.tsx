@@ -6,6 +6,9 @@ const Home: NextPage = () => {
     <>
       <Layout />
       <Header />
+      <div className="inDevelopment">
+        <h1>In Development</h1>
+      </div>
     </>
   )
 }
